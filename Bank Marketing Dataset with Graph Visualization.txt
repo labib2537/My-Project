@@ -1,0 +1,264 @@
+import csv
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+import seaborn as sb
+
+csv = pd.read_csv('bank.csv')
+print("*********************** Bank Marketing Dataset *************************")
+print(csv)
+
+print(csv.describe())
+
+print("*********************** Count for JOB *************************")
+
+def job():
+    A = 0
+    T = 0
+    S = 0
+    M=0
+    R=0
+    B=0
+    U=0
+    E=0
+    H=0
+    UN=0
+    SE=0
+    STU=0
+
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['job'] == "admin.":
+                A += 1
+            elif row['job'] == "technician":
+                T += 1
+            elif row['job'] == "services":
+                S += 1
+            elif row['job'] == "management":
+                M += 1
+            elif row['job'] == "unemployed":
+                U += 1
+            elif row['job'] == "retired":
+                R += 1
+            elif row['job'] == "blue-collar":
+                B += 1
+            elif row['job'] == "entrepreneur":
+                E += 1
+            elif row['job'] == "housemaid":
+                H += 1
+            elif row['job'] == "unknown":
+                UN += 1
+            elif row['job'] == "self-employed":
+                SE += 1
+            elif row['job'] == "student":
+                STU += 1
+    print("admin = ",A)
+    print("technician = ", T)
+    print("services = ", S)
+    print("management = ", M)
+    print("retired = ", R)
+    print("blue-collar = ", B)
+    print("unemployed = ", U)
+    print("entrepreneur = ", E)
+    print("housemaid = ", H)
+    print("unknown = ", UN)
+    print("self-employed = ", SE)
+    print("student = ", STU)
+job()
+
+print("*********************** Count for Marital Status *************************")
+
+def marital():
+    m = 0
+    s = 0
+    d = 0
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+
+            if row['marital'] == "married":
+                m += 1
+            elif row['marital'] == "single":
+                s += 1
+            else:
+                d += 1
+    print("Married: ", m)
+    print("Single: ", s)
+    print("Devorsed: ", d)
+marital()
+
+print("*********************** Count for Education *************************")
+
+def Education():
+    un = 0
+    p = 0
+    s = 0
+    t = 0
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+
+            if row['education'] == "primary":
+                p += 1
+            elif row['education'] == "secondary":
+                s += 1
+            elif row['education'] == "tertiary":
+                t += 1
+            else:
+                un += 1
+    print("Primary: ", p)
+    print("Secondry: ", s)
+    print("Tertiary: ", t)
+    print("unknown: ", un)
+Education()
+
+print("*********************** Count for Loan *************************")
+
+def Loan():
+    y = 0
+    n = 0
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+
+            if row['loan'] == "yes":
+                y += 1
+            else:
+                n += 1
+    print("Count for Yes: ", y)
+    print("Count for No: ", n)
+Loan()
+
+print("*********************** Count for Contact *************************")
+
+def Contact():
+    cell = 0
+    tele = 0
+    un = 0
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+
+            if row['contact'] == "cellular":
+                cell += 1
+            elif row['contact'] == "telephone":
+                tele += 1
+            else:
+                un += 1
+    print("Count for cellular: ", cell)
+    print("Count for telephone: ", tele)
+    print("Count for unknown: ", un)
+Contact()
+
+print("*********************** Count for Deposit *************************")
+
+def Deposit():
+    y = 0
+    n = 0
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+
+            if row['deposit'] == "yes":
+                y += 1
+            else:
+                n += 1
+    print("Count for Yes: ", y)
+    print("Count for No: ", n)
+Deposit()
+
+print("*********************** Count for Age in Range *************************")
+
+def age():
+    A=0
+    B=0
+    C=0
+    D=0
+
+    import csv
+    with open('bank.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['age'] >"15" and row['age']<="35":
+                A += 1
+            elif row['age'] >"35" and row['age']<="55":
+                B += 1
+            elif row['age'] >"55" and row['age']<="75":
+                C += 1
+            elif row['age'] >"75" and row['age']<="95":
+                D += 1
+        print("Age between 16 to 35 = ",A)
+        print("Age between 36 to 55 = ", B)
+        print("Age between 56 to 75 = ", C)
+        print("Age between 76 to 95 = ", D)
+age()
+
+
+
+print("*********************** Graph Visual *************************")
+
+print("JOB graph visual")
+
+sb.set_style("whitegrid")
+plt.figure(figsize=(14,7))
+sb.countplot(csv['job'])
+plt.show()
+
+print("Marital graph visual")
+
+sb.set_style("whitegrid")
+plt.figure(figsize=(14,7))
+sb.countplot(csv['marital'])
+plt.show()
+
+print("Education graph visual")
+
+sb.set_style("whitegrid")
+plt.figure(figsize=(14,7))
+sb.countplot(csv['education'])
+plt.show()
+
+print("Loan graph visual")
+
+sb.set_style("whitegrid")
+plt.figure(figsize=(14,7))
+sb.countplot(csv['loan'])
+plt.show()
+
+print("Contact graph visual")
+
+sb.set_style("whitegrid")
+plt.figure(figsize=(14,7))
+sb.countplot(csv['contact'])
+plt.show()
+
+print("Deposit graph visual")
+
+sb.set_style("whitegrid")
+plt.figure(figsize=(14,7))
+sb.countplot(csv['deposit'])
+plt.show()
+
+print("Correlation graph visual")
+
+plt.figure(figsize=(14,7))
+cor = csv.corr()
+sb.heatmap(cor,annot=True)
+plt.show()
+
+print("Age graph visual")
+plt.plot(csv.age.values)
+plt.show()
+
+print("Age graph visual")
+plt.hist(csv.age.values)
+plt.show()
+
+print("*********************** Program End *************************")
